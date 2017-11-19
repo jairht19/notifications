@@ -7,8 +7,8 @@
   position: absolute;
   width: 300px;
   right: 15px;
-  top:70px;
   border-radius: 4px;
+  bottom: 15px;
 }
 #closeNoty{
   cursor: pointer;
