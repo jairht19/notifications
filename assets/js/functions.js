@@ -3,7 +3,7 @@ $(document).ready(function () {
     {type:"info", message:"Cargando!"},
     {type:"warning", message:"Alerta!"},
     {type:"success", message:"Completo"},
-    {type:"danger", message:"Error!"}
+    {type:"error", message:"Error!"}
   ];
   $("#test").click(function () {
     $("#noty").addClass('in');
@@ -14,7 +14,47 @@ $(document).ready(function () {
   $("#closeNoty").click(function () {
     cleanNotification();
   });
+  $("#toastTest").click(function () {
+    toastr.options = {
+      closeButton: false,
+      debug: false,
+      newestOnTop: false,
+      progressBar: false,
+      rtl: false,
+      positionClass: "toast-bottom-right",
+      preventDuplicates: false,
+      onclick: null,
+      showDuration: 300,
+      hideDuration: 1000,
+      timeOut: 5000,
+      extendedTimeOut: 1000,
+      showEasing: "swing",
+      hideEasing: "linear",
+      showMethod: "fadeIn",
+      hideMethod: "fadeOut"
+    };
+    for (var i = 0; i < notification.length; i++) {
+      typeNotificationToast(notification[i]["type"],notification[i]["message"]);
+    }
+  });
 });
+function typeNotificationToast(type,message) {
+  switch (type) {
+    case "info":
+      toastr.info(message);
+      break;
+    case "warning":
+        toastr.warning(message);
+        break;
+    case "success":
+        toastr.success(message);
+        break;
+    case "error":
+        toastr.error(message);
+        break;
+    default:
+  }
+}
 function typeNotification(type,message) {
   switch (type) {
     case "info":
